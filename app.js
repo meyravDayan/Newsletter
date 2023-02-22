@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const chimpServer = emailChimpApiKey.split("-")[1];
+const chimpServer = process.env.emailChimpApiKey.split("-")[1];
 const listId = "6abecd581e";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
@@ -9,7 +9,7 @@ app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
 mailchimp.setConfig({
-  apiKey: emailChimpApiKey,
+  apiKey: process.env.emailChimpApiKey,
   server: chimpServer,
 });
 
