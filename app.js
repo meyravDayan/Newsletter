@@ -4,7 +4,8 @@ const chimpServer = emailChimpApiKey.split("-")[1];
 const listId = "6abecd581e";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
+app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
 mailchimp.setConfig({
@@ -43,6 +44,6 @@ app.post("/failure", (req, res) => {
   res.redirect("/");
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("server is up and running...");
 });
