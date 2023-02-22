@@ -1,7 +1,5 @@
 const express = require("express");
 const app = express();
-// const https = require("https");
-const emailChimpApiKey = "cb1705d8461e874fc56f749a14f475c0-us21";
 const chimpServer = emailChimpApiKey.split("-")[1];
 const listId = "6abecd581e";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
@@ -10,9 +8,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
 mailchimp.setConfig({
-  //*****************************ENTER YOUR API KEY HERE******************************
   apiKey: emailChimpApiKey,
-  //*****************************ENTER YOUR API KEY PREFIX HERE i.e.THE SERVER******************************
   server: chimpServer,
 });
 
